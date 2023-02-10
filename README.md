@@ -1,66 +1,42 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+## Repo
+`laravel-auth`
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Todo
+Come visto a lezione, iniziare a progettare un ipotetico sito con parte *amministrativa* e parte *pubblica*. L'argomento e' un vostro eventuale *portfolio*.
+La pagina pubblica dara' la possibilita' ai visitatori di vedere i *progetti*, mentre quella privata' permettera' all'utente *amministratore* di `creare`, `modificare` o `eliminare` i *progetti* dal portale (stile gestionale).
+Il progetto prendera' anche gran parte della giornata di domani, quindi niente paura per i tempi.
 
-## About Laravel
+### Giornata 1
+- creazione di progetto nuovo con *tutti* i passaggi essenziali per *bootstrap*, *vite* e *auth* (vedi [[2023-02-08 - live coding|live coding - Laravel AUTH]])
+- sviluppo di scaffolding per il `front-end` e per il `back-end`
+- testing di rotte *pubbliche* e *private*
+- creazione di *un utente amministratore* (tramite il `form` di *registrazione*)
+- rimozione successiva delle rotte di amminstrazione (dal `web.php`), in modo che non sia piu' possibile registrarsi ulteriormente
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+A questo punto dovrebbe essere un progetto *piu' o meno vuoto* con tutto il necessario per lo *sviluppo* della parte **core** dell'applicazione.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Giornata 2
+Procedere ora con la parte di `CRUD`, a partire da `model`, `migration`, `factory` e `seeder`, per poi concludere con la parte di `view` e `controller` dando la possibilita' all'utente di eseguire tutte le operazioni `CRUD`.
+Mantenere le operazioni di *scrittura* accessibili *solo all'utente registrato* nella [[#Giornata 1]]. Le operazioni in *sola lettura* invece dovranno essere pubbliche (`home` + `show`)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+> [!tip]- PROTIP
+> 
+> Si consiglia inizialmente di tenere tutte le rotte libere, in modo da velocizzare lo sviluppo del codice. Una volta che la *CRUD completa* sara' codificata e testata, sara' possibile con un semplice `group` andare a proteggere tutte le rotte private in un colpo solo (vedi [[2023-02-08 - live coding#Rotte|live coding - Laravel AUTH > Rotte]])
 
-## Learning Laravel
+#### Entita': **Project**
+| FIELD | DATA TYPE | INTEGRITY | VALIDATION | INFO |
+| - | - | - | - | - |
+| name | VARCHAR(64) | not nullable ; unique | 
+| description | text | nullable | 
+| main_image | VARCHAR | unique | | nella forma di `link` |
+| release_date | date | | in past |
+| repo_link | VARCHAR | not nullable ; unique | | nella forma di `link` a repo **GitHub** |
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+> [!tip]- PROTIP
+> Inizialmente inserire comunque dati *fake*, sara' poi cura dell'*amministratore* inserire i dati reali. Per eliminare i dati *fake* sara' suffciente rilanciare il comando `artisan` per il `refresh` delle tabelle.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### Bonus
+**Eseguite tutte le operazioni**, e' possibile iniziare abbellendo esteticamente la pagina, per poi terminare costumizzando anche il *form di login*, eventualmente modificando anche l'`header` che contiene il menu in testa alla pagina.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Correzione
+[GitHub link](https://github.com/Guybrush3791/laravel-auth-lc)
