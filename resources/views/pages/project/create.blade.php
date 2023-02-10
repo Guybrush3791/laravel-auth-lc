@@ -2,7 +2,7 @@
 
 @section('content')
     
-    <form method="POST" action="{{ route('admin.project.create') }}">
+    <form method="POST" action="{{ route('admin.project.create') }}" enctype="multipart/form-data">
         @csrf
         
         <label for="name">Name</label>
@@ -12,7 +12,7 @@
         <textarea type="text" name="description"></textarea>
         <br>
         <label for="main_image">Main image</label>
-        <input type="text" name="main_image">
+        <input type="file" name="main_image">
         <br>
         <label for="release_date">Release date</label>
         <input type="date" name="release_date">

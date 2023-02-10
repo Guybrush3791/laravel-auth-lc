@@ -4,7 +4,7 @@
     
     <div class="container">
         <h1>{{ $project -> name }}</h1>
-        <img class="project-img" src="{{ $project -> main_image }}" alt="">
+        <img class="project-img" src="{{ asset('storage/' . $project -> main_image) }}" alt="">
         <div>{{ $project -> description }}</div>
         <div>{{ $project -> release_date }} </div>
         <div>Link: <a href="{{ $project -> repo_link }}">GitHub</a></div>

@@ -15,7 +15,7 @@
                     <h2>
                         {{ $project -> name }}
                     </h2>
-                    <img class="project-img" src="{{ $project -> main_image }}" alt="">
+                    <img class="project-img" src="{{ asset('storage/' . $project -> main_image) }}" alt="">
                 </a>
                 <div>{{ $project -> release_date }} </div>
             
